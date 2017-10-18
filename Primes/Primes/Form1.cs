@@ -15,6 +15,8 @@ namespace Primes
   {
     List<int> primes = new List<int>() { 2, 3 };
 
+    private delegate void AddNumberToListCallBack(int number);
+
     public Form1()
     {
       InitializeComponent();
@@ -22,14 +24,9 @@ namespace Primes
 
     private void btnFindPrimes_Click(object sender, EventArgs e)
     {
-      
-
-      //IEnumerable<int> nums = Enumerable.Range(2, maxNumber - 1);
-      
-
+      rtbNumbers.Clear();
+      primes.Clear();
       new Thread(new ThreadStart(FindPrimes)).Start();
-
-     // PrintNums(primes);
     }
 
     private void FindPrimes()
@@ -38,23 +35,24 @@ namespace Primes
       
       for (int i = 3; i < maxNumber; i++)
       {
-        if (primes.All<int>(r => i % r != 0 && r != 1))
+        if (primes.All(r => i % r != 0 && r != 1))
         {
           primes.Add(i);
-          //rtbNumbers.AppendText(i.ToString() + ", ");
+          PrintNums(i);
         }
       }
-
-      PrintNums(primes);
     }
 
-    private void PrintNums(IEnumerable<int> nums)
+    private void PrintNums(int number)
     {
-      rtbNumbers.Clear();
-      foreach (int num in nums)
+      if (rtbNumbers.InvokeRequired)
       {
-        rtbNumbers.AppendText(num.ToString() + ", ");
+        AddNumberToListCallBack d = PrintNums;
+        this.Invoke(d, new object[] {number});
+        return;
       }
+
+      rtbNumbers.AppendText($"{number}, ");
     }
   }
 }
