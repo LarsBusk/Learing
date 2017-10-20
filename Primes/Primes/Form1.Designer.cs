@@ -31,6 +31,8 @@
       this.btnFindPrimes = new System.Windows.Forms.Button();
       this.tbMaxNumber = new System.Windows.Forms.TextBox();
       this.rtbNumbers = new System.Windows.Forms.RichTextBox();
+      this.progressBar = new System.Windows.Forms.ProgressBar();
+      this.lblProgress = new System.Windows.Forms.Label();
       this.SuspendLayout();
       // 
       // btnFindPrimes
@@ -58,11 +60,28 @@
       this.rtbNumbers.TabIndex = 2;
       this.rtbNumbers.Text = "";
       // 
+      // progressBar
+      // 
+      this.progressBar.Location = new System.Drawing.Point(335, 241);
+      this.progressBar.Name = "progressBar";
+      this.progressBar.Size = new System.Drawing.Size(111, 18);
+      this.progressBar.TabIndex = 3;
+      // 
+      // lblProgress
+      // 
+      this.lblProgress.AutoSize = true;
+      this.lblProgress.Location = new System.Drawing.Point(335, 225);
+      this.lblProgress.Name = "lblProgress";
+      this.lblProgress.Size = new System.Drawing.Size(0, 13);
+      this.lblProgress.TabIndex = 4;
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(458, 351);
+      this.Controls.Add(this.lblProgress);
+      this.Controls.Add(this.progressBar);
       this.Controls.Add(this.rtbNumbers);
       this.Controls.Add(this.tbMaxNumber);
       this.Controls.Add(this.btnFindPrimes);
@@ -78,6 +97,8 @@
     private System.Windows.Forms.Button btnFindPrimes;
     private System.Windows.Forms.TextBox tbMaxNumber;
     private System.Windows.Forms.RichTextBox rtbNumbers;
+    private System.Windows.Forms.ProgressBar progressBar;
+    private System.Windows.Forms.Label lblProgress;
   }
 }
 
